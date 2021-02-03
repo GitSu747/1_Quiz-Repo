@@ -6,11 +6,11 @@
         </b-nav>
     </div>
 </template>
+
 <script>
     export default {
         props: [
             'numTotal', 'numCorrect'
         ]
     }
-
 </script>

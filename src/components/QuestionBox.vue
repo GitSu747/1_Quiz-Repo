@@ -6,32 +6,24 @@
             </template>
 
             <hr class="my-4">
-
             <b-list-group>
                 <b-list-group-item button
                                    v-for="(item,index) in shuffledAnswers"
                                    :key="index"
                                    @click="onButtonClick(index)"
                                    :class="answerClass(index)">
-                    <!--//THIS CODE HAS BEEN MOVED TO THE FUNCTION-->
-                    <!--:class="[!isAnswered && selectedIndex == index ? 'selected' :
-                  isAnswered && index === correctIndex ? 'correct' :
-                  isAnswered && index === selectedIndex && index !== correctIndex ? 'wrong' :
-                  '']"-->
-                    {{item}}
+                    {{item}} 
                 </b-list-group-item>
             </b-list-group>
-                <!--<b-button variant="primary" v-for="(item,index) in answerList" :key="index">{{item}}</b-button>-->
-                <!--<li v-for="(item,index) in answerList" :key="index">{{item}}</li>-->
-            <b-button 
-                      variant="primary" 
+            <b-button variant="primary" 
                       @click="onSubmit"
-                      :disabled="selectedIndex ===null || isAnswered"
-                      >
-            Submit</b-button>
-            <b-button variant="success" @click="getNextQuestion">Next</b-button>
-
-
+                      :disabled="selectedIndex ===null || isAnswered">
+            Submit
+            </b-button>
+            <b-button variant="success" 
+                      @click="getNextQuestion">
+            Next
+            </b-button>
         </b-jumbotron>
     </div>
 </template>
@@ -47,10 +39,8 @@
         data: function () {
             
             return {
-                //answers:[]
                 selectedIndex: null,
                 correctIndex: null,
-               // correctIndex:answerList().indexOf(this.questions.correct_answer)
                 shuffledAnswers: [],
                 isAnswered: false,
                 eligibleClass: ''
@@ -97,7 +87,6 @@
                 this.isAnswered = true
             },
             answerClass(index) {
-                //var eligibleClass = ''
                 this.eligibleClass = 
                 !this.isAnswered && this.selectedIndex == index ? "selected" :
                     this.isAnswered && index === this.correctIndex ? "correct" :
@@ -106,15 +95,6 @@
              return this.eligibleClass
             }
         }
-        //watch: {
-        //    questions() {
-        //        var answers = [...this.questions.incorrect_answers, this.questions.correct_answer]
-        //        this.shuffledAnswers = _.shuffle(answers)
-        //        this.correctIndex = this.shuffledAnswers.indexOf(this.questions.correct_answer)
-        //    }
-        //}
-       
-
     }
 </script>
 <style scoped>
